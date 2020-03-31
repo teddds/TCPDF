@@ -1880,10 +1880,32 @@ class TCPDF_STATIC {
 		if (preg_match('|^https?://|', $filename) == 1) {
 			return self::url_exists($filename);
 		}
-		if (strpos($filename, '://')) {
-			return false; // only support http and https wrappers for security reasons
+
+		if(!self::isAllowdFileProtocol($filename)){
+			return false;
 		}
+
 		return @file_exists($filename);
+	}
+
+	public static function isAllowdFileProtocol($filename){
+
+		if (!strpos($filename, '://')) {
+			return true;
+		}
+
+		if(!defined('ALLOWED_FILE_PROTOCOL') || !ALLOWED_FILE_PROTOCOL){
+			return false;
+		}
+
+		$tmp = explode(',', ALLOWED_FILE_PROTOCOL);
+		foreach($tmp as $allowed){
+			if(strpos($filename, $allowed.'://') === 0){
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 	/**

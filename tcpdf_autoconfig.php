@@ -236,6 +236,10 @@ if (!defined('K_TIMEZONE')) {
 	define('K_TIMEZONE', @date_default_timezone_get());
 }
 
+if (!defined('ALLOWED_FILE_PROTOCOL')) {
+	define('ALLOWED_FILE_PROTOCOL', null);
+}
+
 //============================================================+
 // END OF FILE
 //============================================================+

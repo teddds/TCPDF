@@ -222,6 +222,14 @@ define('K_TCPDF_THROW_EXCEPTION_ERROR', false);
  */
 define('K_TIMEZONE', 'UTC');
 
+
+/**
+ * Define a comma-seperate list of allowed file-protocols
+ * e.g. var,ftp etc.
+ */
+//define('ALLOWED_FILE_PROTOCOL', null);
+
+
 //============================================================+
 // END OF FILE
 //============================================================+
